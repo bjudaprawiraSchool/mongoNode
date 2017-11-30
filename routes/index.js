@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongodb = require('mongodb')
+var multer = multer();
+var path = require ('path');
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://newUser:brave123@ds259105.mlab.com:59105/heroku_6rdr5zwb';
 
 

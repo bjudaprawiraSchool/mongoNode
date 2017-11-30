@@ -1,5 +1,10 @@
-var mongodb = require('mongodb')
+var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://newUser:brave123@ds259105.mlab.com:59105/heroku_6rdr5zwb';
+var bodyParser = require('body-parser');
+var path = require ('path');
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
+
 
 module.exports.getAllOrders =  function (request, response) {
 
@@ -67,12 +72,12 @@ module.exports.storeData = function(request, response){
 
         var customerdata = {
             _id: customerID,
-            FIRSTNAME: FIRSTNAME,
+            FIRSTNAME: req.body.user.FIRSTNAME,
             LASTNAME: null,
-            STREET: STREET,
-            CITY: CITY,
-            STATE: STATE,
-            ZIP: ZIP,
+            STREET: req.body.user.STREET,
+            CITY: req.body.user.CITY,
+            STATE: req.body.user.STATE,
+            ZIP: req.body.user.ZIP,
             PHONE: null
         };
 
