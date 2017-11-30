@@ -3,11 +3,9 @@ var router = express.Router();
 var mongodb = require('mongodb')
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://newUser:brave123@ds259105.mlab.com:59105/heroku_6rdr5zwb';
 
-//LOAD the various controllers
-//var controllerMain = require('../controllers/main');   //this will load the main controller file
-var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Orders collection
 
-//MAY HAVE OTHER CODE in index.js
+//LOAD the various controllers
+var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Orders collection
 
 router.get('/mongodb', function (request, response) {
 
@@ -36,5 +34,12 @@ router.get('/mongodb', function (request, response) {
 });//end router.get
 
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
+
+router.post('/storeData', controllerMongoCollection.storeData);
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 module.exports = router;
