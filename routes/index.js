@@ -5,6 +5,7 @@ var multer = multer();
 var path = require ('path');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(upload.array());
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://newUser:brave123@ds259105.mlab.com:59105/heroku_6rdr5zwb';
 
 
